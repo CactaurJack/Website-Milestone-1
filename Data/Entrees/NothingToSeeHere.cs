@@ -11,14 +11,14 @@ using TheFlyingSaucer.Data.Enums;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    class NothingToSeeHere
+    public class NothingToSeeHere : Entree
     {
         /// <summary>
         /// Establishes private backing variables
         /// </summary>
         private string name = "Nothing to See Here";
         private string description = "The breakfast classic of bacon, eggs, and Texas toast.";
-        private double price = 3.50;
+        private decimal price = new Decimal(3.50);
         private uint calories = 512;
         private bool substituteSausage = false;
         private EggStyle eggstyle = EggStyle.OverEasy;
@@ -34,7 +34,7 @@ namespace TheFlyingSaucer.Data.Entrees
             get { return description; }
             set { description = value; }
         }
-        public double Price
+        public decimal Price
         {
             get { return price; }
             set { price = value; }
@@ -59,7 +59,16 @@ namespace TheFlyingSaucer.Data.Entrees
         }
         public List<string> SpecialInstructions
         {
-            get { return specialInstructions; }
+            get
+            {
+                specialInstructions = new List<string>();
+                if (substituteSausage)
+                {
+                    specialInstructions.Add("Substitute Sausage");
+                }
+                specialInstructions.Add("Eggs " + eggstyle.ToString());
+                return specialInstructions;
+            }
             set { specialInstructions = value; }
         }
         public bool SubstituteSausage
@@ -68,10 +77,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 substituteSausage = value;
-                if (substituteSausage)
-                {
-                    specialInstructions.Add("Substitute Sausage");
-                }
             }
         }
         /// <summary>
@@ -83,7 +88,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 eggstyle = value;
-                specialInstructions.Add("Eggs " + eggstyle.ToString());
             }
         }
     }

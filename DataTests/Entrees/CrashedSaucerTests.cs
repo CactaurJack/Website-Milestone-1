@@ -11,7 +11,7 @@ using TheFlyingSaucer.Data.Entrees;
 using TheFlyingSaucer.Data.Enums;
 
 namespace TheFlyingSaucer.DataTests.Entrees
-{/*
+{
     /// <summary>
     /// Unit tests for the CrashedSaucer entree
     /// </summary>
@@ -91,4 +91,4 @@ namespace TheFlyingSaucer.DataTests.Entrees
             Assert.Equal(instructions.Length, cs.SpecialInstructions.Count);
         }
     }
-*/}
+}

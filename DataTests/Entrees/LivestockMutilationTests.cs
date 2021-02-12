@@ -11,7 +11,7 @@ using TheFlyingSaucer.Data.Entrees;
 using TheFlyingSaucer.Data.Enums;
 
 namespace TheFlyingSaucer.DataTests.Entrees
-{/*
+{
     /// <summary>
     /// Tests for the LivestockMutilation entree class
     /// </summary>
@@ -72,4 +72,4 @@ namespace TheFlyingSaucer.DataTests.Entrees
             Assert.Equal(instructions.Length, lm.SpecialInstructions.Count);
         }
     }
-*/}
+}

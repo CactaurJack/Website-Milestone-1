@@ -10,14 +10,14 @@ using System.Text;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    class LivestockMutilation
+    public class LivestockMutilation : Entree
     {
         /// <summary>
         /// Establishes private backing variables
         /// </summary>
         private string name = "Livestock Mutilation";
         private string description = "A hearty gravy saturated with sausage, poured over fluffy golden buttermilk biscuits.";
-        private double price = 6.10;
+        private decimal price = new Decimal(6.10);
         private uint calories = 332;
         private List<string> specialInstructions = new List<string>();
         /// <summary>
@@ -35,7 +35,7 @@ namespace TheFlyingSaucer.Data.Entrees
             get { return description; }
             set { description = value; }
         }
-        public double Price
+        public decimal Price
         {
             get { return price; }
             set { price = value; }
@@ -47,22 +47,24 @@ namespace TheFlyingSaucer.Data.Entrees
         }
         public List<string> SpecialInstructions
         {
-            get { return specialInstructions; }
+            get
+            {
+                specialInstructions = new List<string>();
+                if (gravyOnTheSide)
+                {
+                    specialInstructions.Add("Gravy on the Side");
+                }
+                return specialInstructions;
+            }
             set { specialInstructions = value; }
         }
-        /// <summary>
-        /// Updates Special Instructions
-        /// </summary>
+
         public bool GravyOnTheSide
         {
             get { return gravyOnTheSide; }
             set
             {
                 gravyOnTheSide = value;
-                if (gravyOnTheSide)
-                {
-                    specialInstructions.Add("Gravy on the Side");
-                }
             }
         }
 

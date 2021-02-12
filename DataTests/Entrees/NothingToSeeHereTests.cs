@@ -11,7 +11,7 @@ using TheFlyingSaucer.Data.Entrees;
 using TheFlyingSaucer.Data.Enums;
 
 namespace TheFlyingSaucer.DataTests.Entrees
-{/*
+{
     /// <summary>
     /// Unit tests for the NothingToSeeHere entree class
     /// </summary>
@@ -80,4 +80,4 @@ namespace TheFlyingSaucer.DataTests.Entrees
             Assert.Equal(instructions.Length, ntsh.SpecialInstructions.Count);
         }
     }
-*/}
+}

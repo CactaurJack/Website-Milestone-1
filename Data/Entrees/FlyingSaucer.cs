@@ -11,17 +11,18 @@ using TheFlyingSaucer.Data.Enums;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class FlyingSaucer
+    public class FlyingSaucer : Entree
     {
         /// <summary>
         /// Establishing and initializing private backing
         /// variables for the class
         /// </summary>
         private string name = "Flying Saucer";
-        private string description = "Our namesake dish. A full stack of fluffy golden pancakes, served with whipped cream, butter and your choice of syrup";
-        private double price = 5.50;
+        private string description = "Our namesake dish. A full stack of fluffy golden pancakes, served with whipped cream, butter and your choice of syrup.";
+        private decimal price = new Decimal(5.50);
         private uint calories = 254;
         private bool halfStack = false;
+        private bool syrup = true;
         private SyrupFlavor syrupFlavor = SyrupFlavor.Maple;
         private List<string> specialInstructions = new List<string>() { "Maple" };
 
@@ -41,13 +42,13 @@ namespace TheFlyingSaucer.Data.Entrees
         /// <summary>
         /// Handles price changes based on halfStack bool property
         /// </summary>
-        public double Price
+        public decimal Price
         {
             get
             {
                 if (halfStack)
                 {
-                    return 3.25;
+                    return new Decimal(3.25);
                 }
                 else
                 {
@@ -77,7 +78,25 @@ namespace TheFlyingSaucer.Data.Entrees
         }
         public List<string> SpecialInstructions
         {
-            get { return specialInstructions; }
+            get
+            {
+                specialInstructions = new List<string>();
+                if (halfStack)
+                {
+                    specialInstructions.Add("Half Stack");
+                }
+
+                if (syrup)
+                {
+                    specialInstructions.Add(syrupFlavor.ToString() + " Syrup");
+                }
+                else
+                {
+                    specialInstructions.Add("Hold Syrup");
+                }
+
+                return specialInstructions;
+            }
             set { specialInstructions = value; }
         }
         /// <summary>
@@ -89,19 +108,21 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 syrupFlavor = value;
-                specialInstructions.Add(syrupFlavor.ToString());
             }
         }
+
+        public bool Syrup
+        {
+            get { return syrup; }
+            set { syrup = value; }
+        }
+
         public bool HalfStack
         {
             get { return halfStack; }
             set 
             {
                 halfStack = value;
-                if(halfStack)
-                {
-                    specialInstructions.Add("Half Stack");
-                };
             }
         }
 

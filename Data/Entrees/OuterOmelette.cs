@@ -10,14 +10,14 @@ using System.Text;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    class OuterOmelette
+    public class OuterOmelette : Entree
     {
         /// <summary>
         /// Establishes private backing variables
         /// </summary>
         private string name = "Outer Omelette";
         private string description = "A loaded omelette stuffed with all the favorites.";
-        private double price = 5.80;
+        private decimal price = new Decimal(5.80);
         private uint calories = 510;
         private List<string> specialInstructions = new List<string>();
         /// <summary>
@@ -45,7 +45,7 @@ namespace TheFlyingSaucer.Data.Entrees
             get { return description; }
             set { description = value; }
         }
-        public double Price
+        public decimal Price
         {
             get { return price; }
             set { price = value; }
@@ -57,7 +57,43 @@ namespace TheFlyingSaucer.Data.Entrees
         }
         public List<string> SpecialInstructions
         {
-            get { return specialInstructions; }
+            get
+            {
+                specialInstructions = new List<string>();
+                if (!tomatoes)
+                {
+                    specialInstructions.Add("Hold Tomatoes");
+                }
+                if (!mushrooms)
+                {
+                    specialInstructions.Add("Hold Mushrooms");
+                }
+                if (!peppers)
+                {
+                    specialInstructions.Add("Hold Peppers");
+                }
+                if (!onions)
+                {
+                    specialInstructions.Add("Hold Onions");
+                }
+                if (!spinach)
+                {
+                    specialInstructions.Add("Hold Spinach");
+                }
+                if (!ham)
+                {
+                    specialInstructions.Add("Hold Ham");
+                }
+                if (!cheese)
+                {
+                    specialInstructions.Add("Hold Cheese");
+                }
+                if (!sourCream)
+                {
+                    specialInstructions.Add("Hold Sour Cream");
+                }
+                return specialInstructions;
+            }
             set { specialInstructions = value; }
         }
         /// <summary>
@@ -70,10 +106,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 tomatoes = value;
-                if(!tomatoes)
-                {
-                    specialInstructions.Add("Hold Tomatoes");
-                }
             }
         }
         public bool Mushrooms
@@ -82,10 +114,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 mushrooms = value;
-                if (!mushrooms)
-                {
-                    specialInstructions.Add("Hold Mushrooms");
-                }
             }
         }
         public bool Peppers
@@ -94,10 +122,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 peppers = value;
-                if (!peppers)
-                {
-                    specialInstructions.Add("Hold Peppers");
-                }
             }
         }
         public bool Onions
@@ -106,10 +130,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 onions = value;
-                if (!onions)
-                {
-                    specialInstructions.Add("Hold Onions");
-                }
             }
         }
         public bool Spinach
@@ -118,10 +138,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 spinach = value;
-                if (!spinach)
-                {
-                    specialInstructions.Add("Hold Spinach");
-                }
             }
         }
         public bool Ham
@@ -130,10 +146,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 ham = value;
-                if (!ham)
-                {
-                    specialInstructions.Add("Hold Ham");
-                }
             }
         }
         public bool Cheese
@@ -142,10 +154,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 cheese = value;
-                if (!cheese)
-                {
-                    specialInstructions.Add("Hold Cheese");
-                }
             }
         }
         public bool SourCream
@@ -154,10 +162,6 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 sourCream = value;
-                if (!sourCream)
-                {
-                    specialInstructions.Add("Hold Sour Cream");
-                }
             }
         }
 

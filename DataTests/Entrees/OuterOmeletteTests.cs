@@ -11,7 +11,7 @@ using TheFlyingSaucer.Data.Entrees;
 using TheFlyingSaucer.Data.Enums;
 
 namespace TheFlyingSaucer.DataTests.Entrees
-{/*
+{
     /// <summary>
     /// Unit tests for the OuterOmlette entree class
     /// </summary>
@@ -173,4 +173,4 @@ namespace TheFlyingSaucer.DataTests.Entrees
             Assert.Equal(instructions.Length, oo.SpecialInstructions.Count);
         }
     }
-*/}
+}
