@@ -14,7 +14,7 @@ namespace TheFlyingSaucer.Data.Sides
     /// <summary>
     /// Establishes MissingLinks class that inherits from Side abstract class
     /// </summary>
-    public class MissingLinks : Side
+    public class MissingLinks : Side, IOrderItem
     {
         /// <summary>
         /// declaration of private backing variables

@@ -14,7 +14,7 @@ namespace TheFlyingSaucer.Data.Sides
     /// <summary>
     /// Establishes CropCircleOats class that inherits from Side abstract class
     /// </summary>
-    public class CropCircleOats : Side
+    public class CropCircleOats : Side, IOrderItem
     {
         /// <summary>
         /// declaration of private backing variables

@@ -10,7 +10,7 @@ using System.Text;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class OuterOmelette : Entree
+    public class OuterOmelette : Entree, IOrderItem
     {
         /// <summary>
         /// Establishes private backing variables

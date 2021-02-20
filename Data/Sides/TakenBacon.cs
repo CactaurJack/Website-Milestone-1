@@ -14,7 +14,7 @@ namespace TheFlyingSaucer.Data.Sides
     /// <summary>
     /// Establishes TakenBacon class that inherits from Side abstract class
     /// </summary>
-    public class TakenBacon : Side
+    public class TakenBacon : Side, IOrderItem
     {
         /// <summary>
         /// declaration of private backing variables

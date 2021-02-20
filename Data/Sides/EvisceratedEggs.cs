@@ -14,7 +14,7 @@ namespace TheFlyingSaucer.Data.Sides
     /// <summary>
     /// Establishes EviceratedEggs class that inherits from Side abstract class
     /// </summary>
-    public class EvisceratedEggs : Side
+    public class EvisceratedEggs : Side, IOrderItem
     {
         /// <summary>
         /// declaration of private backing variables

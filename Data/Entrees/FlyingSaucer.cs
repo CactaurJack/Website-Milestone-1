@@ -11,7 +11,7 @@ using TheFlyingSaucer.Data.Enums;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class FlyingSaucer : Entree
+    public class FlyingSaucer : Entree, IOrderItem
     {
         /// <summary>
         /// Establishing and initializing private backing

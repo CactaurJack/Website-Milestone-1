@@ -15,7 +15,7 @@ namespace TheFlyingSaucer.Data.Sides
     /// Establishes YoureToast
     /// class that inherits from Side abstract class
     /// </summary>
-    public class YoureToast : Side
+    public class YoureToast : Side, IOrderItem
     {
         /// <summary>
         /// declaration of private backing variables

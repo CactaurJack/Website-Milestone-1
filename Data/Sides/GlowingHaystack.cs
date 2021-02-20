@@ -14,7 +14,7 @@ namespace TheFlyingSaucer.Data.Sides
     /// <summary>
     /// Establishes GlowingHaystack class that inherits from Side abstract class
     /// </summary>
-    public class GlowingHaystack : Side
+    public class GlowingHaystack : Side, IOrderItem
     {
         /// <summary>
         /// declaration of private backing variables

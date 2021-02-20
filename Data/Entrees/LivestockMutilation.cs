@@ -10,7 +10,7 @@ using System.Text;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class LivestockMutilation : Entree
+    public class LivestockMutilation : Entree, IOrderItem
     {
         /// <summary>
         /// Establishes private backing variables

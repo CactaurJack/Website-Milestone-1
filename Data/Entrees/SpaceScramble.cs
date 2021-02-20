@@ -11,7 +11,7 @@ using TheFlyingSaucer.Data.Enums;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class SpaceScramble : Entree
+    public class SpaceScramble : Entree, IOrderItem
     {
         /// <summary>
         /// Establishes private backing variables
