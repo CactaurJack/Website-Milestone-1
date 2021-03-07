@@ -24,7 +24,7 @@ namespace TheFlyingSaucer.Data.Entrees
         private bool halfStack = false;
         private bool syrup = true;
         private SyrupFlavor syrupFlavor = SyrupFlavor.Maple;
-        private List<string> specialInstructions = new List<string>() { "Maple" };
+        private List<string> specialInstructions = new List<string>();
 
         /// <summary>
         /// Establishing public variables and getting and setting parameters

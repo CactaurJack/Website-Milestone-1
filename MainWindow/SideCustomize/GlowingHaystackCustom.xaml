@@ -1,0 +1,20 @@
+﻿<Window x:Class="mainWindow.SideCustomize.GlowingHaystackCustom"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mainWindow.SideCustomize"
+        mc:Ignorable="d"
+        Title="GlowingHaystackCustom" Height="450" Width="800">
+    <Grid>
+		<StackPanel>
+			<CheckBox x:Name="Sauced" IsChecked="True">Sauced</CheckBox>
+			<ComboBox Width="150" Height="25" x:Name="Size" HorizontalAlignment="Left" >
+				<ComboBoxItem Content="Small"/>
+				<ComboBoxItem Content="Medium"/>
+				<ComboBoxItem Content="Large"/>
+			</ComboBox>
+			<Button Click="Done_Click">Done</Button>
+		</StackPanel>
+    </Grid>
+</Window>

@@ -23,6 +23,7 @@ namespace TheFlyingSaucer.Data.Entrees
         private uint calories = 510;
         private bool halfStack = false;
         private bool syrup = true;
+        private bool whippedCream = true;
         private SyrupFlavor syrupFlavor = SyrupFlavor.Maple;
         private List<string> specialInstructions = new List<string>();
 
@@ -87,10 +88,15 @@ namespace TheFlyingSaucer.Data.Entrees
                 {
                     specialInstructions.Add(syrupFlavor.ToString() + " Syrup");
                 }
-                else
+                if(!syrup)
                 {
                     specialInstructions.Add("Hold Syrup");
                 }
+                if(!whippedCream)
+                {
+                    specialInstructions.Add("Hold Whipped Cream");
+                }
+                
 
                 return specialInstructions;
             }
@@ -113,6 +119,12 @@ namespace TheFlyingSaucer.Data.Entrees
             get { return halfStack; }
             set { halfStack = value; }
             
+        }
+
+        public bool WhippedCream
+        {
+            get { return whippedCream; }
+            set { whippedCream = value; }
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿<Window x:Class="mainWindow.EntreeCustomize.OuterOmletteCustom"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mainWindow.EntreeCustomize"
+        mc:Ignorable="d"
+        Title="OuterOmletteCustom" Height="450" Width="800">
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<StackPanel>
+			<CheckBox Name="Tomatoes" IsChecked="true">Tomatoes</CheckBox>
+			<CheckBox Name="Mushrooms" IsChecked="true">Mushrooms</CheckBox>
+			<CheckBox Name="Peppers" IsChecked="true">Peppers</CheckBox>
+			<CheckBox Name="Onions" IsChecked="true">Onions</CheckBox>
+			<CheckBox Name="Spinach" IsChecked="true">Spinach</CheckBox>
+			<CheckBox Name="Ham" IsChecked="true">Ham</CheckBox>
+			<CheckBox Name="Cheese" IsChecked="true">Cheese</CheckBox>
+			<CheckBox Name="SourCream" IsChecked="true">Sour Cream</CheckBox>
+			<ComboBox Width="150" Height="25" x:Name="Style" HorizontalAlignment="Left" >
+				<ComboBoxItem Content="Scrambled"/>
+				<ComboBoxItem Content="Poached"/>
+				<ComboBoxItem Content="Hard Boiled"/>
+				<ComboBoxItem Content="Sunny Side Up"/>
+				<ComboBoxItem Content="Over Easy"/>
+				<ComboBoxItem Content="Over Medium"/>
+				<ComboBoxItem Content="Over Well"/>
+			</ComboBox>
+			<Button Click="Done_Click">Done</Button>
+		</StackPanel>
+	</Grid>
+</Window>
