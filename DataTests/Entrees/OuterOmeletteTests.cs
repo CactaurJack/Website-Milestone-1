@@ -172,5 +172,25 @@ namespace TheFlyingSaucer.DataTests.Entrees
             }
             Assert.Equal(instructions.Length, oo.SpecialInstructions.Count);
         }
+
+        [Fact]
+        public void ShouldChangeProperty()
+        {
+            var oo = new OuterOmelette();
+            oo.Tomatoes = false;
+            Assert.PropertyChanged(oo, "Tomatoes", () => oo.Tomatoes = false);
+            oo.Mushrooms = false;
+            Assert.PropertyChanged(oo, "Mushrooms", () => oo.Mushrooms = false);
+            oo.Peppers = false;
+            Assert.PropertyChanged(oo, "Peppers", () => oo.Peppers = false);
+            oo.Onions = false;
+            Assert.PropertyChanged(oo, "Onions", () => oo.Onions = false);
+            oo.Ham = false;
+            Assert.PropertyChanged(oo, "Ham", () => oo.Ham = false);
+            oo.Cheese = false;
+            Assert.PropertyChanged(oo, "Cheese", () => oo.Cheese = false);
+            oo.SourCream = false;
+            Assert.PropertyChanged(oo, "SourCream", () => oo.SourCream = false);
+        }
     }
 }

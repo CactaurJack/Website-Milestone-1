@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Sides
 {
@@ -16,6 +17,7 @@ namespace TheFlyingSaucer.Data.Sides
     /// </summary>
     public class CropCircleOats : Side, IOrderItem
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// declaration of private backing variables
         /// </summary>
@@ -92,25 +94,33 @@ namespace TheFlyingSaucer.Data.Sides
         public SyrupFlavor SyrupFlavor
         {
             get { return syrupFlavor; }
-            set { syrupFlavor = value; }
+            set { syrupFlavor = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SyrupFlavor"));
+            }
         }
 
         public Size Size
         {
             get { return size; }
-            set { size = value; }
+            set { size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+            }
         }
 
         public bool Syrup
         {
             get { return syrup; }
-            set { syrup = value; }
+            set { syrup = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Syrup"));
+            }
         }
 
         public bool Butter
         {
             get { return butter; }
-            set { butter = value; }
+            set { butter = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Butter"));
+            }
         }
 
         /// <summary>

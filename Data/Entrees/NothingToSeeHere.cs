@@ -8,11 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class NothingToSeeHere : Entree, IOrderItem
+    public class NothingToSeeHere : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Establishes event handler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Establishes private backing variables
         /// </summary>
@@ -71,16 +76,21 @@ namespace TheFlyingSaucer.Data.Entrees
             }
             set { specialInstructions = value; }
         }
+
+        /// <summary>
+        /// Gets and sets the SubstititueSausage bool property and raises event on property changed
+        /// </summary>
         public bool SubstituteSausage
         {
             get { return substituteSausage; }
             set
             {
                 substituteSausage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SubstituteSausage"));
             }
         }
         /// <summary>
-        /// Establishes eggStyle
+        /// Establishes eggStyle and raises event on property changed
         /// </summary>
         public EggStyle EggStyle
         {
@@ -88,6 +98,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 eggstyle = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EggStyle"));
             }
         }
     }

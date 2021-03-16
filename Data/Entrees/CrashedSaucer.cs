@@ -8,11 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class CrashedSaucer : Entree, IOrderItem
+    public class CrashedSaucer : Entree, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Establishing and initializing private backing
         /// variables for the class
@@ -102,29 +105,56 @@ namespace TheFlyingSaucer.Data.Entrees
             }
             set { specialInstructions = value; }
         }
+
+
+        /// <summary>
+        /// Gets and sets SyrupFlavor enum property and raises event on property changed
+        /// </summary>
         public SyrupFlavor SyrupFlavor
         {
             get { return syrupFlavor; }
-            set { syrupFlavor = value; }
+            set {
+                
+                syrupFlavor = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SyrupFlavor"));
+            }
         }
 
+        /// <summary>
+        /// Gets and sets Syrup bool property and raises event on property changed
+        /// </summary>
         public bool Syrup
         {
             get { return syrup; }
-            set { syrup = value; }
+            set {  
+                syrup = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Syrup"));}
         }
 
+        /// <summary>
+        /// Gets and sets HalfStack bool property and raises event on property changed
+        /// </summary>
         public bool HalfStack
         {
             get { return halfStack; }
-            set { halfStack = value; }
+            set {
+                
+                halfStack = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HalfStack"));
+            }
             
         }
 
+        /// <summary>
+        /// Gets and sets WhippedCream bool property and raises event on property changed
+        /// </summary>
         public bool WhippedCream
         {
             get { return whippedCream; }
-            set { whippedCream = value; }
+            set {
+                
+                whippedCream = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("WhippedCream")); }
         }
     }
 }

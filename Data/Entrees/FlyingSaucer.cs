@@ -8,11 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class FlyingSaucer : Entree, IOrderItem
+    public class FlyingSaucer : Entree, IOrderItem, INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Establishing and initializing private backing
         /// variables for the class
@@ -100,7 +103,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set { specialInstructions = value; }
         }
         /// <summary>
-        /// Updates syrup flavor and adds it to the specialInstructions property
+        /// Updates syrup flavor and adds it to the specialInstructions property and raises event that property has changed
         /// </summary>
         public SyrupFlavor SyrupFlavor
         {
@@ -108,21 +111,30 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 syrupFlavor = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SyrupFlavor"));
             }
         }
-
+        /// <summary>
+        /// Gets and sets Syrup bool property and raises event on property change
+        /// </summary>
         public bool Syrup
         {
             get { return syrup; }
-            set { syrup = value; }
+            set { syrup = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Syrup"));
+            }
         }
 
+        /// <summary>
+        /// Gets and sets the HalfStack bool property and raises event on property changed
+        /// </summary>
         public bool HalfStack
         {
             get { return halfStack; }
             set 
             {
                 halfStack = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HalfStack"));
             }
         }
 

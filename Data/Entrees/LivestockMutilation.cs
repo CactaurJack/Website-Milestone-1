@@ -7,11 +7,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class LivestockMutilation : Entree, IOrderItem
+    public class LivestockMutilation : Entree, IOrderItem, INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Establishes private backing variables
         /// </summary>
@@ -59,12 +62,16 @@ namespace TheFlyingSaucer.Data.Entrees
             set { specialInstructions = value; }
         }
 
+        /// <summary>
+        /// Gets and sets the GravyOnTheSide bool property and raises event on property change
+        /// </summary>
         public bool GravyOnTheSide
         {
             get { return gravyOnTheSide; }
             set
             {
                 gravyOnTheSide = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GravyOnTheSide"));
             }
         }
 

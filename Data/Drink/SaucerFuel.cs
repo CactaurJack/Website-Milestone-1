@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Drink
 {
-    public class SaucerFuel : Drink, IOrderItem
+    public class SaucerFuel : Drink, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Invokes the event listener
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private string name = "Saucer Fuel";
         private string description = "Beamed directly from the best coffee plantations of South America, our rich brew is bound to put a bounce in your spacewalk.";
         private Size size = Size.Small;
@@ -28,10 +34,15 @@ namespace TheFlyingSaucer.Data.Drink
             set { description = value; }
         }
 
+        /// <summary>
+        /// Gets and sets the size and raises event on change
+        /// </summary>
         public Size Size
         {
             get { return size; }
-            set { size = value; }
+            set {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                size = value; }
         }
 
         public decimal Price
@@ -93,16 +104,26 @@ namespace TheFlyingSaucer.Data.Drink
             set { specialInstructions = value; }
         }
 
+        /// <summary>
+        /// Gets and sets RoomForCream bool property and raises event on property change
+        /// </summary>
         public bool RoomForCream
         {
             get { return roomForCream; }
-            set { roomForCream = value; }
+            set {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RoomForCream"));
+                roomForCream = value; }
         }
 
+        /// <summary>
+        /// Gets and sets the Decaf bool property and raises event on property change
+        /// </summary>
         public bool Decaf
         {
             get { return decaf; }
-            set { decaf = value; }
+            set {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Decaf"));
+                decaf = value; }
         }
 
     }

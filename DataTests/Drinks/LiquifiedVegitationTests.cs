@@ -37,5 +37,30 @@ namespace TheFlyingSaucer.DataTests.Drinks
             Assert.Equal(JuiceFlavor.Tomato, lv.JuiceFlavor);
         }
 
+        [Fact]
+        public void PropertyShouldChange()
+        {
+            lv = new LiquifiedVegetation();
+            Assert.PropertyChanged(lv, "JuiceFlavor", () => lv.JuiceFlavor = TheFlyingSaucer.Data.Enums.JuiceFlavor.Apple);
+            lv = new LiquifiedVegetation();
+            lv.JuiceFlavor = JuiceFlavor.Cranberry;
+            Assert.PropertyChanged(lv, "JuiceFlavor", () => lv.JuiceFlavor = TheFlyingSaucer.Data.Enums.JuiceFlavor.Cranberry);
+            lv = new LiquifiedVegetation();
+            lv.JuiceFlavor = JuiceFlavor.Grape;
+            Assert.PropertyChanged(lv, "JuiceFlavor", () => lv.JuiceFlavor = TheFlyingSaucer.Data.Enums.JuiceFlavor.Grape);
+            lv = new LiquifiedVegetation();
+            lv.JuiceFlavor = JuiceFlavor.Orange;
+            Assert.PropertyChanged(lv, "JuiceFlavor", () => lv.JuiceFlavor = TheFlyingSaucer.Data.Enums.JuiceFlavor.Orange);
+            lv = new LiquifiedVegetation();
+            lv.JuiceFlavor = JuiceFlavor.Tomato;
+            Assert.PropertyChanged(lv, "JuiceFlavor", () => lv.JuiceFlavor = TheFlyingSaucer.Data.Enums.JuiceFlavor.Tomato);
+            lv = new LiquifiedVegetation();
+            Assert.PropertyChanged(lv, "Size", () => lv.Size = Size.Small);
+            lv.Size = Size.Medium;
+            Assert.PropertyChanged(lv, "Size", () => lv.Size = Size.Medium);
+            lv.Size = Size.Large;
+            Assert.PropertyChanged(lv, "Size", () => lv.Size = Size.Large);
+        }
+
     }
 }

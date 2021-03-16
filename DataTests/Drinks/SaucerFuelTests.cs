@@ -39,5 +39,22 @@ namespace TheFlyingSaucer.DataTests.Drinks
             Assert.Equal(true, sf.RoomForCream);
         }
 
+        [Fact]
+        public void PropertyShouldChange()
+        {
+            sf = new SaucerFuel();
+            Assert.PropertyChanged(sf, "Size", () => sf.Size = Size.Small);
+            sf.Size = Size.Medium;
+            Assert.PropertyChanged(sf, "Size", () => sf.Size = Size.Medium);
+            sf.Size = Size.Large;
+            Assert.PropertyChanged(sf, "Size", () => sf.Size = Size.Large);
+
+            sf.RoomForCream = true;
+            Assert.PropertyChanged(sf, "RoomForCream", () => sf.RoomForCream = true);
+
+            sf.Decaf = true;
+            Assert.PropertyChanged(sf, "Decaf", () => sf.Decaf = true);
+        }
+
     }
 }

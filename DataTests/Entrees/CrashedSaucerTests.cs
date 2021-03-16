@@ -90,5 +90,29 @@ namespace TheFlyingSaucer.DataTests.Entrees
             }
             Assert.Equal(instructions.Length, cs.SpecialInstructions.Count);
         }
+
+        [Fact]
+        public void ShouldChangeProperty()
+        {
+            var cs = new CrashedSaucer();
+            cs.SyrupFlavor = SyrupFlavor.Maple;
+            Assert.PropertyChanged(cs, "SyrupFlavor", () => cs.SyrupFlavor = SyrupFlavor.Maple);
+            cs.SyrupFlavor = SyrupFlavor.Blackberry;
+            Assert.PropertyChanged(cs, "SyrupFlavor", () => cs.SyrupFlavor = SyrupFlavor.Blackberry);
+            cs.SyrupFlavor = SyrupFlavor.Blueberry;
+            Assert.PropertyChanged(cs, "SyrupFlavor", () => cs.SyrupFlavor = SyrupFlavor.Blueberry);
+            cs.SyrupFlavor = SyrupFlavor.Cherry;
+            Assert.PropertyChanged(cs, "SyrupFlavor", () => cs.SyrupFlavor = SyrupFlavor.Cherry);
+            cs.SyrupFlavor = SyrupFlavor.Strawberry;
+            Assert.PropertyChanged(cs, "SyrupFlavor", () => cs.SyrupFlavor = SyrupFlavor.Strawberry);
+
+            cs.HalfStack = true;
+            Assert.PropertyChanged(cs, "HalfStack", () => cs.HalfStack = true);
+            cs.Syrup = false;
+            Assert.PropertyChanged(cs, "Syrup", () => cs.Syrup = false);
+            cs.WhippedCream = false;
+            Assert.PropertyChanged(cs, "WhippedCream", () => cs.WhippedCream = false);
+
+        }
     }
 }

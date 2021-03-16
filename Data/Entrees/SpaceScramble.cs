@@ -8,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
     public class SpaceScramble : Entree, IOrderItem
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Establishes private backing variables
         /// </summary>
@@ -102,6 +104,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 potatoes = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Potatoes"));
             }
         }
         public bool Sausage
@@ -110,6 +113,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 sausage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sausage"));
             }
         }
         public bool Peppers
@@ -118,6 +122,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 peppers = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Peppers"));
             }
         }
         public bool Cheese
@@ -126,6 +131,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 cheese = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheese"));
             }
         }
         public bool SourCream
@@ -134,6 +140,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 sourCream = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SourCream"));
             }
         }
         public bool Egg
@@ -142,10 +149,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 egg = value;
-                if (!egg)
-                {
-                    specialInstructions.Add("Hold Egg");
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
             }
         }
         /// <summary>
@@ -158,6 +162,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set 
             { 
                 eggStyle = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EggStyle"));
             }
         }
     }

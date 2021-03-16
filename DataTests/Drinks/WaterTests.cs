@@ -21,5 +21,16 @@ namespace TheFlyingSaucer.DataTests.Drinks
             Assert.Equal(Size.Large, w.Size);
 
         }
+
+        [Fact]
+        public void ShouldChangeProperty()
+        {
+            w = new Water();
+            Assert.PropertyChanged(w, "Size", () => w.Size = Size.Small);
+            w.Size = Size.Medium;
+            Assert.PropertyChanged(w, "Size", () => w.Size = Size.Medium);
+            w.Size = Size.Large;
+            Assert.PropertyChanged(w, "Size", () => w.Size = Size.Large);
+        }
     }
 }

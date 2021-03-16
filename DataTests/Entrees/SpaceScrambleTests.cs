@@ -160,5 +160,26 @@ namespace TheFlyingSaucer.DataTests.Entrees
             }
             Assert.Equal(instructions.Length, ss.SpecialInstructions.Count);
         }
+
+        /*
+         * Can't figure out why it's trying to assign System.threading.tasks.task to bool
+        [Fact]
+        public void ShouldChangeProperty()
+        {
+            SpaceScramble ss = new SpaceScramble();
+            ss.Potatoes = false;
+            Assert.PropertyChanged(ss, "Potatoes", () => ss.Potatoes = false);
+            ss.Sausage = false;
+            Assert.PropertyChanged(ss, "Sausage", () => ss.Sausage = false);
+            ss.Peppers = false;
+            Assert.PropertyChanged(ss, "Peppers", () => ss.Peppers = false);
+            ss.Cheese = false;
+            Assert.PropertyChanged(ss, "Cheese", () => ss.Cheese = false);
+            ss.SourCream = false;
+            Assert.PropertyChanged(ss, "SourCream", () => ss.SourCream = false);
+            ss.Egg = false;
+            Assert.PropertyChanged(ss, "Egg", () => ss.Egg = false);
+        }
+        */
     }
 }

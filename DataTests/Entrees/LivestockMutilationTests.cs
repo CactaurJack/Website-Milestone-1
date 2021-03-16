@@ -71,5 +71,13 @@ namespace TheFlyingSaucer.DataTests.Entrees
             }
             Assert.Equal(instructions.Length, lm.SpecialInstructions.Count);
         }
+
+        [Fact]
+        public void ShouldChangeProperty()
+        {
+            var lm = new LivestockMutilation();
+            lm.GravyOnTheSide = true;
+            Assert.PropertyChanged(lm, "GravyOnTheSide", () => lm.GravyOnTheSide = true);
+        }
     }
 }

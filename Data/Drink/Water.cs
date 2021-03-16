@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Drink
 {
-    public class Water : Drink, IOrderItem
+    public class Water : Drink, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Initializes the event handler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private string name = "Water";
         private string description = "Watch out if you come from a planet where pure H2O is deadly, because that’s all this is!";
         private Size size = Size.Small;
@@ -27,10 +33,15 @@ namespace TheFlyingSaucer.Data.Drink
             set { description = value; }
         }
 
+        /// <summary>
+        /// Gets and sets the Size property and raises event on property change
+        /// </summary>
         public Size Size
         {
             get { return size; }
-            set { size = value; }
+            set {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                size = value; }
         }
 
         public decimal Price
@@ -57,10 +68,15 @@ namespace TheFlyingSaucer.Data.Drink
             set { specialInstructions = value; }
         }
 
+        /// <summary>
+        /// Gets and sets the Ice bool property and raises event on property change
+        /// </summary>
         public bool Ice
         {
             get { return ice; }
-            set { ice = value; }
+            set {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                ice = value; }
         }
 
     }

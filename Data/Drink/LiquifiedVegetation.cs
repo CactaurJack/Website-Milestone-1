@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Drink
 {
-    public class LiquifiedVegetation : Drink, IOrderItem
+    public class LiquifiedVegetation : Drink, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private string name = "Liquified Vegetation";
         private string description = "Fresh juice extracted from the finest fruits and vegetables";
         private Size size = Size.Small;
@@ -27,16 +30,23 @@ namespace TheFlyingSaucer.Data.Drink
             set { description = value; }
         }
 
+        /// <summary>
+        /// Gets and sets the size and invokes event on property change
+        /// </summary>
         public Size Size
         {
             get { return size; }
-            set { size = value; }
+            set {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                size = value; 
+            }
         }
 
         public decimal Price
         {
             get { switch (size) 
                     {
+                        
                         case Size.Small:
                             price = new Decimal(1.00);
                             return price;
@@ -48,7 +58,7 @@ namespace TheFlyingSaucer.Data.Drink
                             return price;
                         default:
                             return price;
-                    } 
+                    }
             }
             set { price = value; }
         }
@@ -177,10 +187,15 @@ namespace TheFlyingSaucer.Data.Drink
             set { specialInstructions = value; }
         }
 
+        /// <summary>
+        /// Gets and sets Juice Flavor and raises event when it changes
+        /// </summary>
         public JuiceFlavor JuiceFlavor
         {
             get { return juiceFlavor; }
-            set { juiceFlavor = value; }
+            set {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("JuiceFlavor"));
+                juiceFlavor = value; }
         }
 
     }

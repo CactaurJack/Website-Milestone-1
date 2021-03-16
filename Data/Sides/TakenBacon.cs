@@ -8,14 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Sides
 {
     /// <summary>
     /// Establishes TakenBacon class that inherits from Side abstract class
     /// </summary>
-    public class TakenBacon : Side, IOrderItem
+    public class TakenBacon : Side, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// declaration of private backing variables
         /// </summary>
@@ -89,7 +91,9 @@ namespace TheFlyingSaucer.Data.Sides
         public Size Size
         {
             get { return size; }
-            set { size = value; }
+            set { size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+            }
         }
 
         public List<string> SpecialInstructions

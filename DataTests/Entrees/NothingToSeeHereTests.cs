@@ -79,5 +79,28 @@ namespace TheFlyingSaucer.DataTests.Entrees
             }
             Assert.Equal(instructions.Length, ntsh.SpecialInstructions.Count);
         }
+
+        [Fact]
+        public void ShouldChangeProperty()
+        {
+            var ntsh = new NothingToSeeHere();
+            ntsh.EggStyle = EggStyle.HardBoiled;
+            Assert.PropertyChanged(ntsh, "EggStyle", () => ntsh.EggStyle = EggStyle.HardBoiled);
+            ntsh.EggStyle = EggStyle.OverEasy;
+            Assert.PropertyChanged(ntsh, "EggStyle", () => ntsh.EggStyle = EggStyle.OverEasy);
+            ntsh.EggStyle = EggStyle.OverMedium;
+            Assert.PropertyChanged(ntsh, "EggStyle", () => ntsh.EggStyle = EggStyle.OverMedium);
+            ntsh.EggStyle = EggStyle.OverWell;
+            Assert.PropertyChanged(ntsh, "EggStyle", () => ntsh.EggStyle = EggStyle.OverWell);
+            ntsh.EggStyle = EggStyle.Poached;
+            Assert.PropertyChanged(ntsh, "EggStyle", () => ntsh.EggStyle = EggStyle.Poached);
+            ntsh.EggStyle = EggStyle.Scrambled;
+            Assert.PropertyChanged(ntsh, "EggStyle", () => ntsh.EggStyle = EggStyle.Scrambled);
+            ntsh.EggStyle = EggStyle.SunnySideUp;
+            Assert.PropertyChanged(ntsh, "EggStyle", () => ntsh.EggStyle = EggStyle.SunnySideUp);
+
+            ntsh.SubstituteSausage = true;
+            Assert.PropertyChanged(ntsh, "SubstituteSausage", () => ntsh.SubstituteSausage = true);
+        }
     }
 }

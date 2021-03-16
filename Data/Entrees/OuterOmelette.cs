@@ -7,11 +7,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Entrees
 {
-    public class OuterOmelette : Entree, IOrderItem
+    public class OuterOmelette : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Establishes event handler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Establishes private backing variables
         /// </summary>
@@ -106,6 +111,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 tomatoes = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomatoes"));
             }
         }
         public bool Mushrooms
@@ -114,6 +120,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 mushrooms = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
             }
         }
         public bool Peppers
@@ -122,6 +129,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 peppers = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Peppers"));
             }
         }
         public bool Onions
@@ -130,6 +138,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 onions = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Onions"));
             }
         }
         public bool Spinach
@@ -138,6 +147,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 spinach = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Spinach"));
             }
         }
         public bool Ham
@@ -146,6 +156,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 ham = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ham"));
             }
         }
         public bool Cheese
@@ -154,6 +165,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 cheese = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheese"));
             }
         }
         public bool SourCream
@@ -162,6 +174,7 @@ namespace TheFlyingSaucer.Data.Entrees
             set
             {
                 sourCream = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SourCream"));
             }
         }
 

@@ -8,14 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TheFlyingSaucer.Data.Enums;
+using System.ComponentModel;
 
 namespace TheFlyingSaucer.Data.Sides
 {
     /// <summary>
     /// Establishes GlowingHaystack class that inherits from Side abstract class
     /// </summary>
-    public class GlowingHaystack : Side, IOrderItem
+    public class GlowingHaystack : Side, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// declaration of private backing variables
         /// </summary>
@@ -91,13 +93,17 @@ namespace TheFlyingSaucer.Data.Sides
         public Size Size
         {
             get { return size; }
-            set { size = value; }
+            set { size = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+            }
         }
 
         public bool Sauced
         {
             get { return sauced; }
-            set { sauced = value; }
+            set { sauced = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sauced"));
+            }
         }
 
         /// <summary>

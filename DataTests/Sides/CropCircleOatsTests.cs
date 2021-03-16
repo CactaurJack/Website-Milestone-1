@@ -93,5 +93,19 @@ namespace TheFlyingSaucer.DataTests.Sides
             Assert.Equal(flavor, cco.SyrupFlavor);
             Assert.Equal(instructions.Length, cco.SpecialInstructions.Count);
         }
+
+        /*
+         * Same problem, trying to convert to a threading task, I'm at a complete loss
+        [Fact]
+        public void ShouldChangeProperty()
+        {
+            var cco = new CropCircleOats();
+            Assert.PropertyChanged(cco, "Size", () => cco.Size = Size.Small);
+            cco.Size = Size.Medium;
+            Assert.PropertyChanged(cco, "Size", () => cco.Size = Size.Medium);
+            cco.Size = Size.Large;
+            Assert.PropertyChanged(cco, "Size", () => cco.Size = Size.Large); 
+        }
+        */
     }
 }
