@@ -64,6 +64,8 @@
 				
 			</Grid>
 		</Viewbox>
-		<ListBox Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="4" Name="orderList">Current Order</ListBox>
+		<ListBox Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="4" Name="orderListBox" SelectionChanged="orderList_SelectionChanged">Current Order</ListBox>
+		<Button Click="PlaceOrder_Click" Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="1" Name="PlaceOrder"> Place Order</Button>
+		<Button Click="RemoveItem_Click" Grid.Column="6" Grid.Row="5" Grid.ColumnSpan="1" Name="RemoveItem">Remove Item</Button>
 	</Grid>
 </Window>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.Specialized;
 using TheFlyingSaucer.Data;
 using TheFlyingSaucer.Data.Entrees;
 using TheFlyingSaucer.Data.Sides;
@@ -27,10 +28,12 @@ namespace mainWindow
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<IOrderItem> OrderList;
+        public Order Order;
+        private List<IOrderItem> itemList;
+        private int nextOrderNumber = 1;
         public MainWindow()
-        {
-            OrderList = new List<IOrderItem>();
+        { 
+            Order = new Order(nextOrderNumber);
             InitializeComponent();
         }
 
@@ -47,7 +50,8 @@ namespace mainWindow
             CrashedSaucer cs = new CrashedSaucer();
             cscWindow.ShowDialog();
             cs = cscWindow.cs;
-            OrderList.Add(cs);
+            Order.AddItem(cs);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Flying Saucer Button
@@ -62,7 +66,8 @@ namespace mainWindow
             FlyingSaucer fs = new FlyingSaucer();
             fscWindow.ShowDialog();
             fs = fscWindow.fs;
-            OrderList.Add(fs);
+            Order.AddItem(fs);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Livestock Mutilation Button
@@ -77,7 +82,8 @@ namespace mainWindow
             LivestockMutilation ls = new LivestockMutilation();
             lscWindow.ShowDialog();
             ls = lscWindow.ls;
-            OrderList.Add(ls);
+            Order.AddItem(ls);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Nothing To See Here Button
@@ -92,7 +98,8 @@ namespace mainWindow
             NothingToSeeHere ntsh = new NothingToSeeHere();
             ntshcWindow.ShowDialog();
             ntsh = ntshcWindow.ntsh;
-            OrderList.Add(ntsh);
+            Order.AddItem(ntsh);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Outer Omlette Button
@@ -107,7 +114,8 @@ namespace mainWindow
             OuterOmelette oo = new OuterOmelette();
             oocWindow.ShowDialog();
             oo = oocWindow.oo;
-            OrderList.Add(oo);
+            Order.AddItem(oo);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Space Scramble Button
@@ -122,7 +130,8 @@ namespace mainWindow
             SpaceScramble ss = new SpaceScramble();
             sscWindow.ShowDialog();
             ss = sscWindow.ss;
-            OrderList.Add(ss);
+            Order.AddItem(ss);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Crop Circle Oats Button
@@ -137,7 +146,8 @@ namespace mainWindow
             CropCircleOats cco = new CropCircleOats();
             ccocWindow.ShowDialog();
             cco = ccocWindow.cco;
-            OrderList.Add(cco);
+            Order.AddItem(cco);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Evicerated Eggs Button
@@ -152,7 +162,8 @@ namespace mainWindow
             EvisceratedEggs ee = new EvisceratedEggs();
             eecWindow.ShowDialog();
             ee = eecWindow.ee;
-            OrderList.Add(ee);
+            Order.AddItem(ee);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Glowing Haystack Button
@@ -167,7 +178,8 @@ namespace mainWindow
             GlowingHaystack gh = new GlowingHaystack();
             ghcWindow.ShowDialog();
             gh = ghcWindow.gh;
-            OrderList.Add(gh);
+            Order.AddItem(gh);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Missing Links Button
@@ -182,7 +194,8 @@ namespace mainWindow
             MissingLinks ml = new MissingLinks();
             mlcWindow.ShowDialog();
             ml = mlcWindow.ml;
-            OrderList.Add(ml);
+            Order.AddItem(ml);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Taken Bacon Button
@@ -197,7 +210,8 @@ namespace mainWindow
             TakenBacon tb = new TakenBacon();
             tbcWindow.ShowDialog();
             tb = tbcWindow.tb;
-            OrderList.Add(tb);
+            Order.AddItem(tb);
+            orderList();
         }
         /// <summary>
         /// Handler for event of You're Toast Button
@@ -212,7 +226,8 @@ namespace mainWindow
             YoureToast yt = new YoureToast();
             ytcWindow.ShowDialog();
             yt = ytcWindow.yt;
-            OrderList.Add(yt);
+            Order.AddItem(yt);
+            orderList();
         }
 
         /// <summary>
@@ -228,7 +243,8 @@ namespace mainWindow
             LiquifiedVegetation lv = new LiquifiedVegetation();
             lvcWindow.ShowDialog();
             lv = lvcWindow.lv;
-            OrderList.Add(lv);
+            Order.AddItem(lv);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Saucer Fuel Button
@@ -243,7 +259,8 @@ namespace mainWindow
             SaucerFuel sf = new SaucerFuel();
             sfcWindow.ShowDialog();
             sf = sfcWindow.sf;
-            OrderList.Add(sf);
+            Order.AddItem(sf);
+            orderList();
         }
         /// <summary>
         /// Handler for event of Water Button
@@ -258,7 +275,50 @@ namespace mainWindow
             Water w = new Water();
             wcWindow.ShowDialog();
             w = wcWindow.w;
-            OrderList.Add(w);
+            Order.AddItem(w);
+            orderList();
+        }
+
+
+        private void orderList_Changed(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            orderList();
+        }
+
+        private void orderList()
+        {
+            orderListBox.Items.Clear();
+            orderListBox.Items.Add("Current Order " + Order.Number);
+            orderListBox.Items.Add(Order.DateTime);
+            for(int i = 0; i < Order.OrderList.Count; i++)
+            {
+                orderListBox.Items.Add(Order.OrderList[i].Name);
+                for(int j = 0; j < Order.OrderList[i].SpecialInstructions.Count; j++)
+                {
+                    orderListBox.Items.Add("    + " + Order.OrderList[i].SpecialInstructions[j].ToString());
+                }
+            }
+            orderListBox.Items.Add("Subtotal = " + Order.SubTotal);
+            orderListBox.Items.Add("Tax = " + Order.Tax);
+            orderListBox.Items.Add("Total = " + Order.Total);
+            orderListBox.Items.Add("Calories = " + Order.Calories);
+        }
+
+        private void orderList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void PlaceOrder_Click(object sender, RoutedEventArgs e)
+        {
+            orderListBox.Items.Clear();
+            Order = new Order(nextOrderNumber);
+            nextOrderNumber++;
+        }
+
+        private void RemoveItem_Click(object sender, RoutedEventArgs e)
+        {
+            orderList();
         }
     }
 }
